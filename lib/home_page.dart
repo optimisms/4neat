@@ -4,9 +4,9 @@ import 'search_bar.dart';
 import 'fullscreen_map.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.logoPath});
+  const MyHomePage({super.key});
 
-  final String logoPath;
+  final String logoPath = 'assets/logo_generic.png';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
