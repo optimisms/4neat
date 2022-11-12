@@ -1,42 +1,43 @@
 import 'package:flutter/material.dart';
-import 'enclosed_map.dart';
+import 'provo_map.dart';
 import 'search_bar.dart';
 import 'fullscreen_map.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   final String logoPath = 'assets/logo_generic.png';
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 Color baseColor = const Color(0xffffde5a);
 Color accentColor = const Color(0xff065e40);
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Image.asset(widget.logoPath, height: 40.0),
-        ),
-        actions: [
-          //TODO: update these icons maybe, def get rid of search
-          //TODO: update menu bar
-          IconButton(
-            onPressed: () {
-              // method to show the search bar
-              showSearch(
-                  context: context,
-                  // delegate to customize the search bar
-                  delegate: CustomSearchDelegate());
-            },
-            icon: const Icon(Icons.search),
-          )
-        ],
+        leading: const Text(''),
+        centerTitle: true,
+        title: Image.asset(widget.logoPath, height: 40.0),
+        // actions: [
+        //   //TODO: update these icons maybe, def get rid of search
+        //   //TODO: update menu bar
+        //   IconButton(
+        //     onPressed: () {
+        //       // method to show the search bar
+        //       showSearch(
+        //         context: context,
+        //         // delegate to customize the search bar
+        //         delegate: CustomSearchDelegate(),
+        //       );
+        //     },
+        //     icon: const Icon(Icons.search),
+        //   )
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -99,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   height: 150.0,
                   width: 300.0,
                   //TODO 1: add functionality where clicking map widget opens a full screen map
-                  child: EnclosedMap(),
+                  child: ProvoGoogleMap(),
                 ),
                 //TODO: add row with "Popular" and "View all"
                 //TODO: add layout with most recent meal
@@ -111,8 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomNavigationBar: BottomAppBar(
         //TODO: fix theme and figure out how to use Theme.of(context) values instead of constants
-        //color: baseColor,
-        color: Theme.of(context).primaryColor,
+        color: baseColor,
+        // color: Theme.of(context).primaryColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[

@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: MaterialColor(yellowBase),
       ),
       //TODO: replace with actual logo
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }

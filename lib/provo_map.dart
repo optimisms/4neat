@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class EnclosedMap extends StatefulWidget {
-  const EnclosedMap({Key? key}) : super(key: key);
+class ProvoGoogleMap extends StatefulWidget {
+  const ProvoGoogleMap({Key? key}) : super(key: key);
 
   final LatLng _provo = const LatLng(40.2338, -111.6585);
 
   @override
-  State<EnclosedMap> createState() => _EnclosedMapState();
+  State<ProvoGoogleMap> createState() => _ProvoGoogleMapState();
 }
 
-class _EnclosedMapState extends State<EnclosedMap> {
+class _ProvoGoogleMapState extends State<ProvoGoogleMap> {
   late GoogleMapController mapController;
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
