@@ -1,10 +1,13 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'provo_map.dart';
-import 'search_bar.dart';
+
+import 'camera_page.dart';
 import 'fullscreen_map.dart';
+import 'provo_map.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final List<CameraDescription> cameras;
+  const HomePage(this.cameras, {super.key});
 
   final String logoPath = 'assets/logo_transp.png';
 
@@ -96,7 +99,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ]),
-                const SizedBox(
+                const SizedBox(height: 20.0),
+                SizedBox(
                   height: 150.0,
                   width: 300.0,
                   //TODO 1: add functionality where clicking map widget opens a full screen map
@@ -139,10 +143,19 @@ class _HomePageState extends State<HomePage> {
             const Icon(Icons.favorite),
             //TODO: update onPressed to open new camera screen
             FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const FullScreenMap()));
+              onPressed: () async {
+                await availableCameras().then((value) => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => CameraPage(cameras: value))));
               },
+              // Navigator.of(context).push(
+              // MaterialPageRoute(
+              //TODO: replace with opening Camera() page
+              // builder: (context) => const FullScreenMap(),
+              //   ),
+              // );
+              // },
               child: const Icon(Icons.camera_alt),
             ),
             const Icon(Icons.calendar_month_rounded),
