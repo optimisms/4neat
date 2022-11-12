@@ -6,7 +6,7 @@ import 'fullscreen_map.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  final String logoPath = 'assets/logo_generic.png';
+  final String logoPath = 'assets/logo_transp.png';
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         leading: const Text(''),
         centerTitle: true,
-        title: Image.asset(widget.logoPath, height: 40.0),
+        title: Image.asset(widget.logoPath, height: 45.0),
         // actions: [
         //   //TODO: update these icons maybe, def get rid of search
         //   //TODO: update menu bar
