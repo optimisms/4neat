@@ -39,6 +39,8 @@ dependencies:
   google_maps_flutter: ^2.2.1
   google_maps_flutter_web: ^0.4.0+3
   camera: ^0.10.0+4
+  path_provider: ^2.0.11
+  path: ^1.8.2
 
 dev_dependencies:
   flutter_test:
