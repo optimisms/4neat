@@ -12,14 +12,6 @@ class FullScreenMap extends StatefulWidget {
 }
 
 class _FullScreenMapState extends State<FullScreenMap> {
-  late GoogleMapController mapController;
-
-  final LatLng _provo = const LatLng(40.2338, -111.6585);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,11 +19,27 @@ class _FullScreenMapState extends State<FullScreenMap> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Food Map'),
-          leading: const BackButton(),
+          leading: const LocalBackButton(),
           // backgroundColor: Colors.green[700],
         ),
         body: const ProvoGoogleMap(),
       ),
+    );
+  }
+}
+
+class LocalBackButton extends StatelessWidget {
+  const LocalBackButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      icon: const Icon(Icons.arrow_back),
     );
   }
 }

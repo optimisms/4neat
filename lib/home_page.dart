@@ -109,6 +109,10 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (_) => const FullScreenMap()));
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           //TODO: make it so that clicking the map itself opens the next screen
