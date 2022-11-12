@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 import 'home_page.dart';
@@ -18,19 +17,11 @@ ThemeData theme = ThemeData(
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-// Obtain a list of the available cameras on the device.
-  final cameras = await availableCameras();
-
-// Get a specific camera from the list of available cameras.
-//   final firstCamera = cameras.first;
-
-  runApp(MyApp(cameras));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final List<CameraDescription> cameras;
-  const MyApp(this.cameras, {super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +34,7 @@ class MyApp extends StatelessWidget {
         //primarySwatch: MaterialColor(yellowBase),
       ),
       //TODO: replace with actual logo
-      home: HomePage(cameras),
+      home: const HomePage(),
     );
   }
 }

@@ -6,8 +6,7 @@ import 'fullscreen_map.dart';
 import 'provo_map.dart';
 
 class HomePage extends StatefulWidget {
-  final List<CameraDescription> cameras;
-  const HomePage(this.cameras, {super.key});
+  const HomePage({super.key});
 
   final String logoPath = 'assets/logo_transp.png';
 
