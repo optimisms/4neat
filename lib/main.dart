@@ -15,7 +15,9 @@ ThemeData theme = ThemeData(
   colorScheme: scheme,
 );
 
-void main() async {
+//TODO: try Future<void>
+//TODO: try removing async
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
@@ -33,7 +35,6 @@ class MyApp extends StatelessWidget {
         // primaryColor: Colors.greenAccent
         //primarySwatch: MaterialColor(yellowBase),
       ),
-      //TODO: replace with actual logo
       home: const HomePage(),
     );
   }

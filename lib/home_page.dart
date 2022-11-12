@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:four_neat/camera_files/new_demo_camera.dart';
 
-import 'camera_page.dart';
 import 'fullscreen_map.dart';
 import 'provo_map.dart';
 
@@ -146,7 +146,8 @@ class _HomePageState extends State<HomePage> {
                 await availableCameras().then((value) => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => CameraPage(cameras: value))));
+                        builder: (_) =>
+                            TakePictureScreen(camera: value.first))));
               },
               child: const Icon(Icons.camera_alt),
             ),
