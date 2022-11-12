@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'search_bar.dart';
 
+//TODO: update color scheme
 Color yellowBase = const Color(0xffffde5a);
 Color greenAccent = const Color(0xff065e40);
 ColorScheme scheme = ColorScheme.light(
@@ -27,6 +29,7 @@ class MyApp extends StatelessWidget {
         //TODO: update primarySwatch to reflect actual color scheme
         //primarySwatch: MaterialColor(yellowBase),
       ),
+      //TODO: replace with actual logo
       home: const MyHomePage(logoPath: 'assets/logo_generic.png'),
     );
   }
@@ -49,25 +52,89 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Center(
           child: Image.asset(widget.logoPath, height: 40.0),
         ),
+        actions: [
+          //TODO: update these icons maybe, def get rid of search
+          //TODO: update menu bar
+          IconButton(
+            onPressed: () {
+              // method to show the search bar
+              showSearch(
+                  context: context,
+                  // delegate to customize the search bar
+                  delegate: CustomSearchDelegate());
+            },
+            icon: const Icon(Icons.search),
+          )
+        ],
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Food Map:',
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 5.0),
+                  child: Text(
+                    'Hey!',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+                  ),
+                ),
+                Text(
+                  'Let\'s get your order',
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ],
             ),
-            Container(
-              margin: const EdgeInsets.all(15.0),
-              child: Text(''),
-            ),
-            Container(
-              child: Container(
-                height: 150.0,
-                width: 300.0,
-                child: const EnclosedMap(),
-              ),
+            const SizedBox(height: 20.0),
+            Column(
+              children: [
+                Row(children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    //TODO: make all buttons/widgets shadowed, see github
+                    child: TextField(
+                      cursorColor: Colors.grey,
+                      decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
+                              borderSide: BorderSide.none),
+                          hintText: 'Search for food nutrition and calories',
+                          hintStyle:
+                              const TextStyle(color: Colors.grey, fontSize: 14),
+                          prefixIcon: Container(
+                            padding: const EdgeInsets.all(15),
+                            width: 18,
+                            child: const Icon(Icons.search),
+                          ),
+                          suffixIcon: Container(
+                              padding: const EdgeInsets.all(15),
+                              width: 18,
+                              //TODO: replace this with the real icon and change yellow
+                              child: Icon(
+                                Icons.settings_overscan,
+                                color: yellowBase,
+                              ))),
+                    ),
+                  ),
+                ]),
+                const SizedBox(
+                  height: 150.0,
+                  width: 300.0,
+                  //TODO 1: add functionality where clicking map widget opens a full screen map
+                  child: EnclosedMap(),
+                ),
+                //TODO: add row with "Popular" and "View all"
+                //TODO: add layout with most recent meal
+                //TODO 2: add menu bar at bottom
+                //TODO 3: include functionality of pressing camera button opens camera
+              ],
             ),
           ],
         ),
