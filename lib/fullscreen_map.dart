@@ -28,6 +28,8 @@ class _FullScreenMapState extends State<FullScreenMap> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Food Map'),
+          //For some reason, inserting BackButton here does not work.
+          //I don't have time to figure out why so I just hardcoded it
           leading: IconButton(
             onPressed: () {
               // method to show the search bar
