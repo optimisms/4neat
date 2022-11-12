@@ -100,7 +100,24 @@ class _HomePageState extends State<HomePage> {
                   height: 150.0,
                   width: 300.0,
                   //TODO 1: add functionality where clicking map widget opens a full screen map
-                  child: ProvoGoogleMap(),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.white)),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          //TODO: make it so that clicking the map itself opens the next screen
+                          //TODO: add animation to open new screen from mapButton
+                          builder: (context) => const FullScreenMap(),
+                        ),
+                      );
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                      child: ProvoGoogleMap(),
+                    ),
+                  ),
                 ),
                 //TODO: add row with "Popular" and "View all"
                 //TODO: add layout with most recent meal
