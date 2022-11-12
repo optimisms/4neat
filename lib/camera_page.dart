@@ -45,6 +45,7 @@ class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(leading: const BackButton()),
       body: SafeArea(
         child: _cameraController.value.isInitialized
             ? CameraPreview(_cameraController)

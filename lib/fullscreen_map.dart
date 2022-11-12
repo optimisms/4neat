@@ -36,20 +36,4 @@ class _FullScreenMapState extends State<FullScreenMap> {
   }
 }
 
-class BackButton extends StatelessWidget {
-  const BackButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      icon: const Icon(Icons.arrow_back),
-    );
-  }
-}
-
 //TODO: look into adding Podfile and iOS Google Maps API key
