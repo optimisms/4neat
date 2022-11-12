@@ -1,9 +1,12 @@
-import 'package:camera/camera.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:four_neat/camera_files/new_demo_camera.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'fullscreen_map.dart';
 import 'provo_map.dart';
+import 'results_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +21,34 @@ Color baseColor = const Color(0xffffde5a);
 Color accentColor = const Color(0xff065e40);
 
 class _HomePageState extends State<HomePage> {
+  File? image;
+
+  Future pickImageG() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
+  Future pickImageC() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+
+      setState(() => this.image = imageTemp);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,6 +158,21 @@ class _HomePageState extends State<HomePage> {
                 //TODO 2: include functionality of pressing camera button opens camera
               ],
             ),
+            // FloatingActionButton(
+            //   onPressed: () {
+            //     pickImageC();
+            //     // await availableCameras().then((value) => Navigator.push(
+            //     //     context,
+            //     //     MaterialPageRoute(
+            //     //         builder: (_) =>
+            //     //             TakePictureScreen(camera: value.first))));
+            //   },
+            //   child: const Icon(Icons.camera_alt),
+            // ),
+            const SizedBox(height: 20),
+            image != null
+                ? Image.file(image!, height: 10.0)
+                : const Text("No image selected"),
           ],
         ),
       ),
@@ -143,11 +189,18 @@ class _HomePageState extends State<HomePage> {
             //TODO: update onPressed to open new camera screen
             FloatingActionButton(
               onPressed: () async {
-                await availableCameras().then((value) => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) =>
-                            TakePictureScreen(camera: value.first))));
+                await pickImageC();
+                if (image != null) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const ResultsScreen(),
+                  ));
+                }
+
+                // await availableCameras().then((value) => Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (_) =>
+                //             TakePictureScreen(camera: value.first))));
               },
               child: const Icon(Icons.camera_alt),
             ),

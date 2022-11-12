@@ -17,8 +17,8 @@ ThemeData theme = ThemeData(
 
 //TODO: try Future<void>
 //TODO: try removing async
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
