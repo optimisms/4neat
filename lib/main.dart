@@ -3,12 +3,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'search_bar.dart';
 
 //TODO: update color scheme
-Color yellowBase = const Color(0xffffde5a);
-Color greenAccent = const Color(0xff065e40);
+Color baseColor = const Color(0xffffde5a);
+Color accentColor = const Color(0xff065e40);
 ColorScheme scheme = ColorScheme.light(
-  primary: yellowBase,
+  primary: baseColor,
   onPrimary: Colors.black,
-  secondary: greenAccent,
+  secondary: accentColor,
   onSecondary: Colors.white,
 );
 
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               //TODO: replace this with the real icon and change yellow
                               child: Icon(
                                 Icons.settings_overscan,
-                                color: yellowBase,
+                                color: baseColor,
                               ))),
                     ),
                   ),
@@ -132,10 +132,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 //TODO: add row with "Popular" and "View all"
                 //TODO: add layout with most recent meal
-                //TODO 2: add menu bar at bottom
-                //TODO 3: include functionality of pressing camera button opens camera
+                //TODO 2: include functionality of pressing camera button opens camera
               ],
             ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: baseColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const <Widget>[
+            //TODO: update Icons colors and sizes
+            Icon(Icons.home),
+            Icon(Icons.favorite),
+            //TODO: update onPressed to open new camera screen
+            FloatingActionButton(
+              onPressed: null,
+              child: Icon(Icons.settings_overscan),
+            ),
+            Icon(Icons.calendar_month_rounded),
+            Icon(Icons.person),
           ],
         ),
       ),
