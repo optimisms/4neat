@@ -109,10 +109,6 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
                     onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (_) => const FullScreenMap()));
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           //TODO: make it so that clicking the map itself opens the next screen
@@ -153,13 +149,6 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (_) => CameraPage(cameras: value))));
               },
-              // Navigator.of(context).push(
-              // MaterialPageRoute(
-              //TODO: replace with opening Camera() page
-              // builder: (context) => const FullScreenMap(),
-              //   ),
-              // );
-              // },
               child: const Icon(Icons.camera_alt),
             ),
             const Icon(Icons.calendar_month_rounded),
