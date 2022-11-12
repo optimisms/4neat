@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:four_neat/provo_map.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'home_page.dart';
 
 void main() => runApp(const FullScreenMap());
 
@@ -28,23 +27,27 @@ class _FullScreenMapState extends State<FullScreenMap> {
         appBar: AppBar(
           centerTitle: true,
           title: const Text('Food Map'),
-          leading: IconButton(
-            //TODO: update these icons maybe, def get rid of search
-            //TODO: update menu bar
-            onPressed: () {
-              // method to show the search bar
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
-              );
-            },
-            icon: const Icon(Icons.arrow_back),
-          ),
+          leading: const BackButton(),
           // backgroundColor: Colors.green[700],
         ),
         body: const ProvoGoogleMap(),
       ),
+    );
+  }
+}
+
+class BackButton extends StatelessWidget {
+  const BackButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.pop(context);
+      },
+      icon: const Icon(Icons.arrow_back),
     );
   }
 }
