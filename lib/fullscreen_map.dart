@@ -16,8 +16,12 @@ class _FullScreenMapState extends State<FullScreenMap> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.primary,
           centerTitle: true,
-          title: const Text('Food Map'),
+          title: Text(
+            'Food Map',
+            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary),
+          ),
           //For some reason, inserting BackButton here does not work.
           //I don't have time to figure out why so I just hardcoded it
           leading: IconButton(
@@ -25,11 +29,33 @@ class _FullScreenMapState extends State<FullScreenMap> {
               // method to show the search bar
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.arrow_back),
+            icon: Icon(
+              Icons.arrow_back,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
           ),
           // backgroundColor: Colors.green[700],
         ),
+        // body: Column(
+        //   children: <Widget>[
+        //     Container(
+        //       height: 200.0,
+        //       width: 200.0,
         body: const ProvoGoogleMap(),
+        //     ),
+        //     Container(
+        //       height: 200.0,
+        //       width: 200.0,
+        //       // child: Column(children: <Widget>[
+        //       //   Row(
+        //       //     children: <Widget>[
+        //       //       Container(height: 100.0, width: 100.0),
+        //       //     ],
+        //       //   ),
+        //       // ]),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
