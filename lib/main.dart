@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: scheme,
         //TODO: update primarySwatch to reflect actual color scheme
-        // primaryColor: Colors.greenAccent
+        primaryColor: baseColor,
         //primarySwatch: MaterialColor(yellowBase),
       ),
       home: const HomePage(),

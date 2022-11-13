@@ -131,9 +131,8 @@ class _HomePageState extends State<HomePage> {
                 ]),
                 const SizedBox(height: 20.0),
                 SizedBox(
-                  height: 150.0,
+                  height: 300.0,
                   width: 300.0,
-                  //TODO 1: add functionality where clicking map widget opens a full screen map
                   child: ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
@@ -158,21 +157,6 @@ class _HomePageState extends State<HomePage> {
                 //TODO 2: include functionality of pressing camera button opens camera
               ],
             ),
-            // FloatingActionButton(
-            //   onPressed: () {
-            //     pickImageC();
-            //     // await availableCameras().then((value) => Navigator.push(
-            //     //     context,
-            //     //     MaterialPageRoute(
-            //     //         builder: (_) =>
-            //     //             TakePictureScreen(camera: value.first))));
-            //   },
-            //   child: const Icon(Icons.camera_alt),
-            // ),
-            const SizedBox(height: 20),
-            image != null
-                ? Image.file(image!, height: 10.0)
-                : const Text("No image selected"),
           ],
         ),
       ),
@@ -183,24 +167,16 @@ class _HomePageState extends State<HomePage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            //TODO: update Icons colors and sizes
             const Icon(Icons.home),
             const Icon(Icons.favorite),
-            //TODO: update onPressed to open new camera screen
             FloatingActionButton(
               onPressed: () async {
                 await pickImageC();
                 if (image != null) {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ResultsScreen(),
+                    builder: (context) => ResultsScreen(image!),
                   ));
                 }
-
-                // await availableCameras().then((value) => Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (_) =>
-                //             TakePictureScreen(camera: value.first))));
               },
               child: const Icon(Icons.camera_alt),
             ),
